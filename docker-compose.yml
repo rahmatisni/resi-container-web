@@ -1,0 +1,47 @@
+services:
+  laravel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        REPO_URL: https://github.com/jmtodev/resi-digital-web.git
+        REPO_REF: main
+        GIT_USERNAME: rahmatisni                                # GANTI
+        GIT_TOKEN: ${GIT_TOKEN}                                       # ambil dari .env/ENV
+    ports:
+      - "8080:80"
+    environment:
+      APP_KEY: base64:EdeLGdPcio/+Ry2GJz/HDpxK9dneWOs4dYKFP7c0e54=
+      APP_ENV: production
+      APP_URL: http://localhost:8080
+      API_URL: http://api:3001
+      DB_CONNECTION: mysql
+      DB_HOST: 172.16.4.59
+      DB_PORT: 3306
+      DB_DATABASE: landing_page
+      DB_USERNAME: tavsir
+      DB_PASSWORD: jmt02022!#
+    networks:
+      - jmto-net
+    depends_on:
+      - mariadb
+    volumes:
+      - laravel_storage:/var/www/html/storage
+
+  mariadb:
+    image: mariadb:11
+    environment:
+      MARIADB_DATABASE: app
+      MARIADB_USER: app
+      MARIADB_PASSWORD: secret
+      MARIADB_ROOT_PASSWORD: rootpass
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:
+  laravel_storage:
+
+networks:
+  jmto-net:
+    external: true
