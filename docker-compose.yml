@@ -21,6 +21,14 @@ services:
       DB_DATABASE: landing_page
       DB_USERNAME: tavsir
       DB_PASSWORD: jmt02022!#
+      SESSION_LIFETIME: 120
+      SESSION_ENCRYPT: false
+      SESSION_PATH: /
+      SESSION_DOMAIN: null
+      SESSION_HTTP_ONLY: true
+      SESSION_SAME_SITE: lax
+      SESSION_DRIVER: file
+      SESSION_SECURE_COOKIE: false
     networks:
       - jmto-net
     depends_on:
