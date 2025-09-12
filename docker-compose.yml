@@ -14,7 +14,7 @@ services:
       APP_KEY: base64:EdeLGdPcio/+Ry2GJz/HDpxK9dneWOs4dYKFP7c0e54=
       APP_ENV: production
       APP_URL: http://localhost:8080
-      API_URL: http://api:3001
+      API_URL: https://travoy.jasamarga.co.id:3000
       DB_CONNECTION: mysql
       DB_HOST: 172.16.4.59
       DB_PORT: 3306
